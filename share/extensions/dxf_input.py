@@ -47,6 +47,11 @@ def export_MTEXT():
             elif vals[groups['21']][0] == -1.0:
                 attribs.update({'transform': 'rotate (%f %f %f)' % (90, x, y)})
         attribs.update({inkex.addNS('linespacing','sodipodi'): '125%'})
+        if vals[groups['72']]:
+            if  vals[groups['72']][0] == 1:
+                attribs.update({'text-anchor': 'middle'})
+                attribs.update({'text-align': 'center'})
+                
         node = inkex.etree.SubElement(layer, 'text', attribs)
         text = ''
         if vals[groups['3']]:
